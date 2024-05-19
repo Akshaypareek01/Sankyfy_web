@@ -49,7 +49,7 @@ export const Home = () => {
                 <Grid container spacing={2}>
                   {
                     OurServicesData.map((el,index)=>{
-                      return   <Grid item xs={6} key={index}>
+                      return   <Grid item xs={12} sm={6} md={6} key={index}>
                       <OurServicesCard data={el}/>
                     </Grid>
                     })
@@ -103,15 +103,15 @@ export const Home = () => {
 
                 <Box sx={{marginTop:"30px"}}>
                 <Grid container spacing={2}>
-        <Grid item xs={4}>
+        <Grid item xs={12} sm={6} md={4}>
           <StoreCards/>
         </Grid>
 
-        <Grid item xs={4}>
+        <Grid item xs={12} sm={6} md={4}>
           <StoreCards/>
         </Grid>
 
-        <Grid item xs={4}>
+        <Grid item xs={12} sm={6} md={4}>
           <StoreCards/>
         </Grid>
       
@@ -129,15 +129,15 @@ export const Home = () => {
 
                 <Box sx={{marginTop:"30px"}}>
                 <Grid container spacing={2}>
-        <Grid item xs={4}>
+        <Grid item xs={12} sm={6} md={4}>
           <StoreCards/>
         </Grid>
 
-        <Grid item xs={4}>
+        <Grid item xs={12} sm={6} md={4}>
           <StoreCards/>
         </Grid>
 
-        <Grid item xs={4}>
+        <Grid item xs={12} sm={6} md={4}>
           <StoreCards/>
         </Grid>
         
@@ -156,15 +156,15 @@ export const Home = () => {
 
                 <Box sx={{marginTop:"30px"}}>
                 <Grid container spacing={2}>
-        <Grid item xs={4}>
+        <Grid item xs={12} sm={6} md={4}>
           <StoreCards/>
         </Grid>
 
-        <Grid item xs={4}>
+        <Grid item xs={12} sm={6} md={4}>
           <StoreCards/>
         </Grid>
 
-        <Grid item xs={4}>
+        <Grid item xs={12} sm={6} md={4}>
           <StoreCards/>
         </Grid>
       

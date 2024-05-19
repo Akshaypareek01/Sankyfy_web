@@ -17,7 +17,6 @@
 #card1{
     width:97.50%;
     margin:auto;
-    height:1000px;
     border-radius:13px;
     background:rgba(255, 255, 255, 0.8);
     backdrop-filter: saturate(200%) blur(30px);

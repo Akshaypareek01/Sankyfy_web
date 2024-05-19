@@ -58,15 +58,15 @@ navigation(path)
   return (
     <Box style={{position:"fixed",top:0,width:"100%",zIndex:999}}>
     <Box style={{display:"flex",justifyContent:"center",alignItems:"center",padding:"15px"}}>
-       <Box  style={{color:"#fff",width:"66%",borderRadius:"13px",padding:"0px 15px 0px 15px",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
+       <Box  style={{width:"66%",borderRadius:"13px",padding:"0px 15px 0px 15px",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
           <Box>
-            <Typography style={{fontSize:"14px",fontWeight:"bold",cursor:"pointer"}} onClick={()=>handelClick("/")}>Sankyfy</Typography>
+            <Typography style={{fontSize:"14px",fontWeight:"bold",cursor:"pointer",color:"#fff"}} onClick={()=>handelClick("/")}>Sankyfy</Typography>
           </Box>
 
           <Box style={{display:"flex",justifyContent:"right",alignItems:"center"}}>
-            <Typography style={{fontSize:"14px",cursor:"pointer"}}>About us</Typography>
-            <Typography style={{marginLeft:"15px",fontSize:"14px",cursor:"pointer"}}>Contact us</Typography>
-            <Typography style={{marginLeft:"25px",fontSize:"14px",cursor:"pointer"}} onClick={()=>handelClick("/login")}>Login</Typography>
+            <Typography style={{fontSize:"14px",cursor:"pointer",color:"#fff"}}>About us</Typography>
+            <Typography style={{marginLeft:"15px",fontSize:"14px",cursor:"pointer",color:"#fff"}}>Contact us</Typography>
+            <Typography style={{marginLeft:"25px",fontSize:"14px",cursor:"pointer",color:"#fff"}} onClick={()=>handelClick("/login")}>Login</Typography>
            
            <Box sx={{marginTop:"5px",marginLeft:"25px"}}>
            <Box onClick={toggleDrawer('right', true)} sx={{cursor:"pointer",borderRadius:"100px",border:"1px solid #E4E4E4",display:"flex",justifyContent:"center",alignItems:"center"}}>

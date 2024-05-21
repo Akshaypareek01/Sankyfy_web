@@ -7,6 +7,8 @@ import { Shop } from "../../Pages/Shop/Shop";
 import { Signup } from "../../Pages/Signup/Signup";
 import { ErrorPage } from "../../Pages/Error/Error";
 import { Home } from "../../Pages/Home/Home";
+import { ContactUs } from "../../Pages/ContactUs/ContactUs";
+import { AboutUs } from "../../Pages/AboutUS/AboutUs";
 
 export const AllRoutes = () => {
 //   const mobileView = useSelector((state) => state.mobileView);
@@ -33,6 +35,8 @@ export const AllRoutes = () => {
       <Route path="/login" element={<Login />}></Route>
       <Route path="/signup" element={<Signup/>}></Route>
       <Route path="/shop" element={<Shop/>}></Route>
+      <Route path="/about-us" element={<AboutUs/>}></Route>
+      <Route path="/contact-us" element={<ContactUs/>}></Route>
       {/* <Route
         path="/payment"
         element={

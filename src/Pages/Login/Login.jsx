@@ -13,7 +13,9 @@ import "./Login.css";
 import { NavBar2 } from "../../Components/NavBar/NavBar2";
 import Lottie from 'react-lottie';
 import animationData from "./Animation - 1716038571450.json"
+import { useNavigate } from "react-router-dom";
 export const Login = () => {
+  const navigation =  useNavigate()
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -22,7 +24,10 @@ export const Login = () => {
       preserveAspectRatio: 'xMidYMid slice'
     }
   };
-
+  
+    const handelClick = (path)=>{
+      window.location.href=path
+        }
   return (
     <Box>
       <NavBar2 />
@@ -128,6 +133,7 @@ export const Login = () => {
                       fontWeight: "bold",
                       cursor: "pointer",
                     }}
+                    onClick={()=>handelClick("/signup")}
                   >
                     Sign up
                   </span>{" "}

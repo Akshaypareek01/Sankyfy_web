@@ -64,8 +64,8 @@ navigation(path)
           </Box>
 
           <Box style={{display:"flex",justifyContent:"right",alignItems:"center"}}>
-            <Typography style={{fontSize:"14px",fontFamily:"Roboto,sans-serif",color:"#344767",cursor:"pointer"}}>About us</Typography>
-            <Typography style={{marginLeft:"15px",fontSize:"14px",fontFamily:"Roboto,sans-serif",color:"#344767",cursor:"pointer"}}>Contact us</Typography>
+            <Typography style={{fontSize:"14px",fontFamily:"Roboto,sans-serif",color:"#344767",cursor:"pointer"}} onClick={()=>handelClick("/about-us")}>About us</Typography>
+            <Typography style={{marginLeft:"15px",fontSize:"14px",fontFamily:"Roboto,sans-serif",color:"#344767",cursor:"pointer"}} onClick={()=>handelClick("/contact-us")}>Contact us</Typography>
             <Typography style={{marginLeft:"25px",fontSize:"14px",fontFamily:"Roboto,sans-serif",color:"#344767",cursor:"pointer"}} onClick={()=>handelClick("/login")}>Login</Typography>
            
            <Box sx={{marginTop:"5px",marginLeft:"25px"}}>

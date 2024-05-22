@@ -77,7 +77,7 @@ navigation(path)
             {
             auth ? 
           
-            <LogoutIcon onClick={()=>logout()} style={{marginLeft:"15px",fontSize:"20px",cursor:"pointer",color:"red"}}  />
+            <LogoutIcon onClick={()=>logout()} style={{marginLeft:"15px",fontSize:"20px",cursor:"pointer"}}  />
             :
             <Typography style={{marginLeft:"15px",fontSize:"14px",cursor:"pointer"}} onClick={()=>handelClick("/login")}>Login</Typography>
            }

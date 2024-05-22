@@ -2,7 +2,7 @@ import { Box, Button, Divider, Drawer, Typography } from '@mui/material'
 import zIndex from '@mui/material/styles/zIndex'
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-
+import LogoutIcon from '@mui/icons-material/Logout';
 export const NavBar2 = () => {
   const auth = localStorage.getItem("auth") || false;
   const [state, setState] = React.useState({
@@ -75,7 +75,7 @@ navigation(path)
            
            {
             auth ? 
-            <Typography style={{marginLeft:"15px",fontSize:"14px",cursor:"pointer",color:"#fff"}} onClick={()=>logout()}>Logout</Typography>
+            <LogoutIcon onClick={()=>logout()} style={{marginLeft:"15px",fontSize:"20px",cursor:"pointer",color:"#fff"}}  />
             :
             <Typography style={{marginLeft:"15px",fontSize:"14px",cursor:"pointer",color:"#fff"}} onClick={()=>handelClick("/login")}>Login</Typography>
            }

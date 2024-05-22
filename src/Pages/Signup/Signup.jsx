@@ -110,7 +110,8 @@ export const Signup = () => {
     e.preventDefault();
     try {
       const response = await axios.post(`${Base_Url}api/user/signup`, formData);
-      console.log("Data==>",response.data)
+      console.log("Data==>",response.data);
+      window.location.href = "/login"
     } catch (error) {
       console.log("Error==>",error)
     }

@@ -19,6 +19,9 @@ import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { useNavigate } from "react-router-dom";
+
+import axios from 'axios';
+import { Base_Url } from "../../Configs/BaseUrl";
 const style = {
   position: 'absolute',
   top: '50%',
@@ -74,6 +77,7 @@ export const Signup = () => {
         (position) => {
           const { latitude, longitude } = position.coords;
           setLocation({ lat: latitude, lng: longitude });
+          getAddress(latitude,longitude)
           setError(null);
         },
         (err) => {
@@ -85,10 +89,32 @@ export const Signup = () => {
     }
   };
 
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword:''
+  });
 
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
-
+  const handleSubmit = async (e) => {
+    if(formData.password !== formData.confirmPassword){
+      alert("Password mismatch");
+      return 
+    }
+    e.preventDefault();
+    try {
+      const response = await axios.post(`${Base_Url}api/user/signup`, formData);
+      console.log("Data==>",response.data)
+    } catch (error) {
+      console.log("Error==>",error)
+    }
+  };
 
 
 
@@ -103,9 +129,7 @@ export const Signup = () => {
   const handleClose = () => setOpen(false);
   const [value, setValue] = useState(0);
   const [address, setAddress] = useState(null);
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+ 
 
   const defaultOptions = {
     loop: true,
@@ -227,12 +251,12 @@ export const Signup = () => {
                 </Card>
               </Box>
               
-              <Box sx={{ width: '100%' }}>
+              {/* <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Details" {...a11yProps(0)} />
           <Tab label="Address" {...a11yProps(1)} />
-          <Tab label="Permissons" {...a11yProps(2)} />
+       
         </Tabs>
       </Box>
 
@@ -306,73 +330,87 @@ export const Signup = () => {
         </div>
       )}
       {error && <p>Error: {error}</p>}
+      <p>Address: {address}</p>
         </Box>
         
         </Box>
 
-                 {/* <Box sx={{ marginTop: "10px" }}>
-                  <TextField
-                    id="inputBox"
-                    sx={{ width: "100%" }}
-                    label="Address"
-                    variant="outlined"
-                  />
-                </Box>
-
-                <Box sx={{ marginTop: "10px" }}>
-                  <TextField
-                    id="inputBox"
-                    sx={{ width: "100%" }}
-                    label="City"
-                    variant="outlined"
-                  />
-                </Box>
-                <Box sx={{ marginTop: "10px" }}>
-                  <TextField
-                    sx={{ width: "100%" }}
-                    label="State"
-                    variant="outlined"
-                  />
-                </Box>
-
-                <Box sx={{ marginTop: "10px" }}>
-                  <TextField
-                    sx={{ width: "100%" }}
-                    label="Country"
-                    variant="outlined"
-                  />
-                </Box> */}
 
                 
               </Box>
       
       </CustomTabPanel>
 
-      <CustomTabPanel value={value} index={2}>
-       
-      </CustomTabPanel>
-    </Box>
+    
+    </Box> */}
+    <Box
+                sx={{
+                  marginTop: "30px",
+                  display: "flex",
+                  justifyContent: "left",
+                  alignContent: "center",
+                  flexDirection: "column",
+                }}
+              >
+                 <Box>
+                  <TextField
+                    id="inputBox"
+                    sx={{ width: "100%" }}
+                    label="Name"
+                    variant="outlined"
+                    name="name" 
+                    value={formData.name} 
+                    onChange={handleChange} 
+                  />
+                </Box>
+
+                <Box sx={{ marginTop: "20px" }}>
+                  <TextField
+                    id="inputBox"
+                    sx={{ width: "100%" }}
+                    label="Email"
+                    variant="outlined"
+                    name="email" 
+                    value={formData.email} 
+                    onChange={handleChange} 
+                  />
+                </Box>
+                <Box sx={{ marginTop: "20px" }}>
+                  <TextField
+                  type="password"
+                    sx={{ width: "100%" }}
+                    label="Password"
+                    variant="outlined"
+                    name="password" 
+                    value={formData.password} 
+                  onChange={handleChange} 
+                  />
+                </Box>
+
+                <Box sx={{ marginTop: "20px" }}>
+                  <TextField
+                  type="password"
+                    sx={{ width: "100%" }}
+                    label="Confirm Password"
+                    variant="outlined"
+                    name="confirmPassword" 
+                    value={formData.confirmPassword} 
+                  onChange={handleChange}
+                  />
+                </Box>
+
+                
+              </Box>
 
                   
-<Box style={{position:"absolute",bottom:10,width:"90%",left: "50%",
-  transform: "translateX(-50%)"}}>
+<Box style={{marginTop:"30px"}}>
 
 <Box sx={{ marginTop: "40px" }}>
-  {
-    value === 0 &&   <Button onClick={()=>setValue(1)} fullWidth variant="contained">
-    Next
+    <Button onClick={handleSubmit}  fullWidth variant="contained">
+   Sign up
   </Button>
-  }
-   {
-    value === 1 &&   <Button onClick={()=>setValue(2)} fullWidth variant="contained">
-    Next
-  </Button>
-  }
-   {
-    value === 2 &&   <Button  fullWidth variant="contained">
-    Done
-  </Button>
-  }
+  
+ 
                
               </Box>
 

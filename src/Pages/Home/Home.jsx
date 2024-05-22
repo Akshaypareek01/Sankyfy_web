@@ -16,6 +16,8 @@ export const Home = () => {
     {title:"Shopkeepers",text:"We also provide a robust suite of tools for shopkeepers to manage and promote their businesses effectively. By registering and completing the KYC process"}
   
   ]
+
+  const userDetails = JSON.parse(localStorage.getItem("userDetails"));
   return (
     <Box>
        <NavBar />

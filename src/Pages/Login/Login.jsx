@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavBar } from "../../Components/NavBar/NavBar";
 import {
   Box,
@@ -14,14 +14,44 @@ import { NavBar2 } from "../../Components/NavBar/NavBar2";
 import Lottie from 'react-lottie';
 import animationData from "./Animation - 1716038571450.json"
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { Base_Url } from "../../Configs/BaseUrl";
 export const Login = () => {
   const navigation =  useNavigate()
+  const [formData, setFormData] = useState({
+
+    email: '',
+    password: '',
+
+  });
+
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
   const defaultOptions = {
     loop: true,
     autoplay: true,
     animationData: animationData,
     rendererSettings: {
       preserveAspectRatio: 'xMidYMid slice'
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    try {
+      const response = await axios.post(`${Base_Url}api/user/login`, formData);
+      console.log("login Data==>",response.data);
+      const Data = response.data.data
+      localStorage.setItem("userDetails",JSON.stringify(Data));
+      localStorage.setItem("auth",true);
+
+      window.location.href = "/";
+    } catch (error) {
+      console.log("Error==>",error);
+      alert("Login Error")
     }
   };
   
@@ -93,6 +123,9 @@ export const Login = () => {
                     sx={{ width: "100%" }}
                     label="Email"
                     variant="outlined"
+                    name="email" 
+                    value={formData.email} 
+                    onChange={handleChange} 
                   />
                 </Box>
                 <Box sx={{ marginTop: "20px" }}>
@@ -100,6 +133,9 @@ export const Login = () => {
                     sx={{ width: "100%" }}
                     label="Password"
                     variant="outlined"
+                    name="password" 
+                    value={formData.password} 
+                    onChange={handleChange} 
                   />
                 </Box>
 
@@ -118,7 +154,7 @@ export const Login = () => {
               </Box>
 
               <Box sx={{ marginTop: "40px" }}>
-                <Button fullWidth variant="contained">
+                <Button onClick={handleSubmit} fullWidth variant="contained">
                   sign in
                 </Button>
               </Box>

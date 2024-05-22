@@ -2,8 +2,10 @@ import { Box, Button, Divider, Drawer, Typography } from '@mui/material'
 import zIndex from '@mui/material/styles/zIndex'
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-
+import LogoutIcon from '@mui/icons-material/Logout';
 export const NavBar = () => {
+  const auth = localStorage.getItem("auth") || false;
+  const userDetails = JSON.parse(localStorage.getItem("userDetails"));
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -55,10 +57,16 @@ export const NavBar = () => {
 navigation(path)
   }
 
+  const logout = ()=>{
+    localStorage.clear();
+    window.location.href="/"
+  }
+
+
   return (
     <Box style={{position:"fixed",top:0,width:"100%",zIndex:999}}>
     <Box style={{display:"flex",justifyContent:"center",alignItems:"center",padding:"15px"}}>
-       <Box  style={{background:"rgba(255, 255, 255, 0.8)",backdropFilter:"saturate(200%) blur(30px)",width:"66%",borderRadius:"13px",padding:"0px 15px 0px 15px",display:"flex",justifyContent:"space-between",alignItems:"center",boxShadow:"rgba(99, 99, 99, 0.2) 0px 2px 8px 0px"}}>
+       <Box  style={{background:"rgba(255, 255, 255, 0.8)",backdropFilter:"saturate(200%) blur(30px)",width:"66%",borderRadius:"13px",padding:"15px",display:"flex",justifyContent:"space-between",alignItems:"center",boxShadow:"rgba(99, 99, 99, 0.2) 0px 2px 8px 0px"}}>
           <Box>
             <Typography style={{fontSize:"14px",fontWeight:"bold",fontFamily:"Roboto,sans-serif",color:"#344767",cursor:"pointer"}} onClick={()=>handelClick("/")}>Sankyfy</Typography>
           </Box>
@@ -66,9 +74,15 @@ navigation(path)
           <Box style={{display:"flex",justifyContent:"right",alignItems:"center"}}>
             <Typography style={{fontSize:"14px",fontFamily:"Roboto,sans-serif",color:"#344767",cursor:"pointer"}} onClick={()=>handelClick("/about-us")}>About us</Typography>
             <Typography style={{marginLeft:"15px",fontSize:"14px",fontFamily:"Roboto,sans-serif",color:"#344767",cursor:"pointer"}} onClick={()=>handelClick("/contact-us")}>Contact us</Typography>
-            <Typography style={{marginLeft:"25px",fontSize:"14px",fontFamily:"Roboto,sans-serif",color:"#344767",cursor:"pointer"}} onClick={()=>handelClick("/login")}>Login</Typography>
+            {
+            auth ? 
+          
+            <LogoutIcon onClick={()=>logout()} style={{marginLeft:"15px",fontSize:"20px",cursor:"pointer",color:"red"}}  />
+            :
+            <Typography style={{marginLeft:"15px",fontSize:"14px",cursor:"pointer"}} onClick={()=>handelClick("/login")}>Login</Typography>
+           }
            
-           <Box sx={{marginTop:"5px",marginLeft:"25px"}}>
+           {/* <Box sx={{marginTop:"5px",marginLeft:"25px"}}>
            <Box onClick={toggleDrawer('right', true)} sx={{cursor:"pointer",borderRadius:"100px",border:"1px solid #E4E4E4",display:"flex",justifyContent:"center",alignItems:"center"}}>
               <img style={{height:"30px",width:"30px",borderRadius:"100px"}} src='https://cdn3.iconfinder.com/data/icons/world-cities-1/256/50-512.png' />
               
@@ -77,7 +91,7 @@ navigation(path)
           <Typography sx={{fontSize:"10px"}}>City</Typography>
         </Box>
 
-           </Box>
+           </Box> */}
             
           </Box>
         

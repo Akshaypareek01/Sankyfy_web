@@ -142,7 +142,7 @@ export const Signup = () => {
   };
 
   const getAddress = (lat, lng) => {
-    const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyC_7MTeb_VHGUKQUzC7reiBib9z_pPh11Y`;
+    const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyBiT-IQhU-7xJVBPuo7t7v5y38anGc6JCk`;
     
     fetch(geocodeUrl)
       .then(response => response.json())
@@ -163,7 +163,7 @@ export const Signup = () => {
  useEffect(() => {
     if (open) {
       const script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyC_7MTeb_VHGUKQUzC7reiBib9z_pPh11Y`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyBiT-IQhU-7xJVBPuo7t7v5y38anGc6JCk`;
       script.async = true;
       script.defer = true;
       script.onload = initMap;

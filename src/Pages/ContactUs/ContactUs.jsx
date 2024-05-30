@@ -1,9 +1,60 @@
 import { Box, Button, Card, CardContent, Grid, TextField, Typography } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
 import { NavBar } from '../../Components/NavBar/NavBar'
 import { Footer } from '../../Components/Footer/Footer'
+import emailjs from 'emailjs-com';
 import "./ContactUs.css"
 export const ContactUs = () => {
+  const userDetails = JSON.parse(localStorage.getItem("userDetails")) || null;
+  const [formValues, setFormValues] = useState({
+    fullName: '',
+    email: '',
+    message: ''
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormValues({
+      ...formValues,
+      [name]: value
+    });
+  };
+
+  const handleSubmit = (event) => {
+  // if(userDetails){
+    const templateParams = {
+      user_name: formValues.fullName,
+      user_email: formValues.email,
+      message: formValues.message,
+    };
+    console.log("data ==>",templateParams)
+
+    emailjs.send('service_kdf9dmb', 'template_ip144in', {
+      to_name: "sankyfy",
+      from_name: formValues.fullName + `(${formValues.email})`,
+      message: formValues.message ,
+      },'99P-9lUmJKrK2CC-V')
+      .then((response) => {
+        console.log('SUCCESS!', response.status, response.text);
+        setFormValues({
+          fullName: '',
+          email: '',
+          message: ''
+        })
+        alert('Email sent successfully');
+      }, (error) => {
+        console.log('FAILED...', error);
+        alert('Error sending email');
+      });
+  // }
+
+  // else{
+  //   alert("Login Please");
+  // }
+
+  
+  };
+
   return (
     <Box>
       <NavBar />
@@ -77,6 +128,9 @@ export const ContactUs = () => {
                     sx={{ width: "100%" }}
                     label="Full Name"
                     variant="standard"
+                    name="fullName"
+                    value={formValues.fullName}
+                    onChange={handleChange}
                   />
             </Grid>
             <Grid item xs={12} sm={6} md={6} >
@@ -85,6 +139,9 @@ export const ContactUs = () => {
                     sx={{ width: "100%" }}
                     label="Email"
                     variant="standard"
+                    name='email'
+                    value={formValues.email}
+          onChange={handleChange}
                   />
             </Grid>
 
@@ -97,6 +154,10 @@ export const ContactUs = () => {
                     label="What can we help you ?"
                     minRows={3}
                     variant="standard"
+                    name='message'
+                    value={formValues.message}
+                    onChange={handleChange}
+                    multiline
                   />
                 </Box>
        
@@ -110,7 +171,7 @@ export const ContactUs = () => {
               </Box>
 
               <Box sx={{ marginTop: "60px" }}>
-                <Button  variant="contained" sx={{borderRadius:"20px"}}>
+                <Button  onClick={handleSubmit} variant="contained" sx={{borderRadius:"20px"}}>
                   Send Message
                 </Button>
               </Box>

@@ -9,6 +9,7 @@ import { ErrorPage } from "../../Pages/Error/Error";
 import { Home } from "../../Pages/Home/Home";
 import { ContactUs } from "../../Pages/ContactUs/ContactUs";
 import { AboutUs } from "../../Pages/AboutUS/AboutUs";
+import { ShopView } from "../../Pages/Shop/ShopView";
 
 export const AllRoutes = () => {
 //   const mobileView = useSelector((state) => state.mobileView);
@@ -34,7 +35,8 @@ export const AllRoutes = () => {
       ></Route>
       <Route path="/login" element={<Login />}></Route>
       <Route path="/signup" element={<Signup/>}></Route>
-      <Route path="/shop" element={<Shop/>}></Route>
+      <Route path="/shops" element={<Shop/>}></Route>
+      <Route path="/shop-view/:id" element={<ShopView/>}></Route>
       <Route path="/about-us" element={<AboutUs/>}></Route>
       <Route path="/contact-us" element={<ContactUs/>}></Route>
       {/* <Route

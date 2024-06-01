@@ -103,8 +103,8 @@ export const Home = () => {
   }, [NearbyshopsData]);
 
   const OurServicesData = [
-    {title:"Users",text:"At our platform, we provide an exceptional service that allows you to seamlessly discover and interact with shops in your vicinity."},
-    {title:"Shopkeepers",text:"We also provide a robust suite of tools for shopkeepers to manage and promote their businesses effectively. By registering and completing the KYC process"}
+    {title:"Users",text:"At our platform, we provide an exceptional service that allows you to seamlessly discover and interact with shops in your vicinity.",path:"/login"},
+    {title:"Shopkeepers",text:"We also provide a robust suite of tools for shopkeepers to manage and promote their businesses effectively. By registering and completing the KYC process",path:"signup-shopkeeper"}
   
   ]
 
@@ -222,6 +222,9 @@ export const Home = () => {
     setFilteredData([])
   }
  
+  const handelLogin =(path)=>{
+    navigation(path)
+  }
 
 
   useEffect(()=>{
@@ -383,7 +386,7 @@ export const Home = () => {
                 <Grid container spacing={2}>
                   {
                     OurServicesData.map((el,index)=>{
-                      return   <Grid item xs={12} sm={6} md={6} key={index}>
+                      return   <Grid onClick={()=>handelLogin(el.path)} item xs={12} sm={6} md={6} key={index}>
                       <OurServicesCard data={el}/>
                     </Grid>
                     })

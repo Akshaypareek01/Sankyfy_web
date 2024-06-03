@@ -33,7 +33,6 @@ const ExpandMore = styled((props) => {
 export const StoreCards =({data})=> {
   const navigation = useNavigate()
   const [expanded, setExpanded] = React.useState(false);
-
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -46,6 +45,10 @@ export const StoreCards =({data})=> {
   const handelShopClick = ()=>{
     // navigation(`shop-view/${data._id}`)
     window.location.href = `shop-view/${data._id}`
+  }
+
+  const handelChatus = ()=>{
+    navigation(`chat/${data.shopkeeperId._id}`)
   }
 
   return (
@@ -92,7 +95,7 @@ export const StoreCards =({data})=> {
       </Box>
      
       <CardActions disableSpacing sx={{display:"flex",justifyContent:"right",alignItems:"center"}}>
-        <IconButton aria-label="add to favorites">
+        <IconButton onClick={handelChatus} aria-label="add to favorites">
           <MessageIcon />
         </IconButton>
         <IconButton onClick={handleDirectionClick} aria-label="share">

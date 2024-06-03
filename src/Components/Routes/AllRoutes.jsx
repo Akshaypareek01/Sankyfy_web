@@ -12,6 +12,7 @@ import { AboutUs } from "../../Pages/AboutUS/AboutUs";
 import { ShopView } from "../../Pages/Shop/ShopView";
 import { ShopKeeperSignup } from "../../Pages/Signup/ShopKeeperSignup";
 import { UnderVerifications } from "../../Pages/UnderVerifications";
+import { Chat } from "../../Pages/Chat/Chat";
 
 export const AllRoutes = () => {
 //   const mobileView = useSelector((state) => state.mobileView);
@@ -43,6 +44,7 @@ export const AllRoutes = () => {
       <Route path="/shop-view/:id" element={<ShopView/>}></Route>
       <Route path="/about-us" element={<AboutUs/>}></Route>
       <Route path="/contact-us" element={<ContactUs/>}></Route>
+      <Route path="/chat/:id" element={<Chat/>}></Route>
       {/* <Route
         path="/payment"
         element={

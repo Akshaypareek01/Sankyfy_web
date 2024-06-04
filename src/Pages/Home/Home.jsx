@@ -14,6 +14,7 @@ import axios from 'axios';
 import { SelectCategoryModel } from '../../Components/Models/SelectCategoryModel';
 import { SelectCityModel } from '../../Components/Models/SelectCityModel';
 import { SelectStateModel } from '../../Components/Models/SelectStateModel';
+import { isMobile } from '../../IsMobile/IsMobile';
 const Item = styled(Paper)(({ theme }) => ({
 
 
@@ -316,7 +317,7 @@ export const Home = () => {
 
              
               
-            <Box sx={{ maxWidth: "80%", margin: "auto" }}>
+            <Box className={isMobile ? "" : 'sw'}>
 
            {
             filteredData && filteredData.length > 0 &&   <Box sx={{ marginTop: "60px" }}>
@@ -375,7 +376,7 @@ export const Home = () => {
             
 
               <Box sx={{marginTop:"60px"}}>
-             <Box sx={{width:"60%",margin:"auto"}}>
+             <Box className={isMobile ? "" : 'sw'}>
               <Box>
               <Box sx={{marginTop:"30px"}}>
                   <Typography sx={{fontSize:"3.25rem",fontWeight:"bold"}}>Our Services</Typography>
@@ -433,7 +434,7 @@ export const Home = () => {
         </Box>
                </Box>
 
-              <Box sx={{width:"80%",margin:"auto"}}>
+              <Box className={isMobile ? "" : 'sw'}>
                
                {
                 randomShopData[0] &&   <Box sx={{marginTop:"60px"}}>

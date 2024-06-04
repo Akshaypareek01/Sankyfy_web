@@ -24,6 +24,7 @@ import AddIcCallIcon from '@mui/icons-material/AddIcCall';
 import MailIcon from '@mui/icons-material/Mail';
 import CloseIcon from '@mui/icons-material/Close';
 import { red } from '@mui/material/colors';
+import { isMobile } from '../../IsMobile/IsMobile';
 
 const style2 = {
   position: 'absolute',
@@ -210,7 +211,7 @@ export const ShopView = () => {
             <CardContent>
 
              <Box sx={{marginTop:"40px"}}>
-             <Box sx={{width:"60%",margin:"auto"}}>
+             <Box className={isMobile ? "" : 'sw'} >
               <Box>
               <Box sx={{marginTop:"30px"}}>
                   <Typography sx={{fontSize:"3.25rem",fontWeight:"bold"}}>Shop Details</Typography>

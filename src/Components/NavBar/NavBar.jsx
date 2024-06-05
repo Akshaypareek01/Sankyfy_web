@@ -124,8 +124,14 @@ export const NavBar = () => {
 
           <Box style={{ display: 'flex', justifyContent: 'right', alignItems: 'center' }}>
             <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}>
-              <Typography
+            <Typography
                 style={{ fontSize: '14px', fontFamily: 'Roboto,sans-serif', color: '#344767', cursor: 'pointer' }}
+                onClick={() => handleClick('/')}
+              >
+                Home
+              </Typography>
+              <Typography
+                style={{marginLeft: '15px', fontSize: '14px', fontFamily: 'Roboto,sans-serif', color: '#344767', cursor: 'pointer' }}
                 onClick={() => handleClick('/about-us')}
               >
                 About us
@@ -158,6 +164,7 @@ export const NavBar = () => {
                 anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
                 transformOrigin={{ vertical: 'top', horizontal: 'right' }}
               >
+                <MenuItem onClick={() => handleClick('/')}>Home</MenuItem>
                 <MenuItem onClick={() => handleClick('/about-us')}>About us</MenuItem>
                 <MenuItem onClick={() => handleClick('/contact-us')}>Contact us</MenuItem>
                 {auth ? (

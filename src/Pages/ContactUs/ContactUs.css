@@ -1,6 +1,6 @@
 #cardContactus{
-    width:530px;
-    margin:auto;
+    /* width:530px;
+    margin:auto; */
     border-radius:13px;
     background:rgba(255, 255, 255, 0.8);
     backdrop-filter: saturate(200%) blur(30px);

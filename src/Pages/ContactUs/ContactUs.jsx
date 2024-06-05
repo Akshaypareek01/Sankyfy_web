@@ -4,6 +4,7 @@ import { NavBar } from '../../Components/NavBar/NavBar'
 import { Footer } from '../../Components/Footer/Footer'
 import emailjs from 'emailjs-com';
 import "./ContactUs.css"
+import { isMobile } from '../../IsMobile/IsMobile';
 export const ContactUs = () => {
   const userDetails = JSON.parse(localStorage.getItem("userDetails")) || null;
   const [formValues, setFormValues] = useState({
@@ -59,21 +60,50 @@ export const ContactUs = () => {
     <Box>
       <NavBar />
 
-      <Box >
-        <Box >
-            <Box sx={{paddingTop:"20px"}}>
-            <Grid container spacing={2} >
-        <Grid item xs={12} sm={6} md={6} sx={{padding:"10px"}}>
-          <img src={"./assets/images/illustrations/illustration-reset.jpg"} style={{width:'calc(100% - 2rem)',
-    height:'calc(100vh - 2rem)',borderRadius:"10px"}} />
+      <Box sx={{
+        marginTop:"150px",
+        display:"flex",
+        justifyContent:"center",
+        alignItems:"center",
+        marginBottom:"100px"
+
+      }}>
+        <Box sx={{width:`${isMobile ? '80%' : "60%"}`}}>
+            <Box sx={{paddingTop:"20px",width:"100%"}}>
+            <Grid container spacing={2}  >
+
+            <Grid item xs={12} sm={12} md={6} sx={{padding:"10px"}}>
+          <Box style={{borderRadius:"10px",height:"500px",padding:"20px",display:"flex",flexDirection:"column"}} > 
+             <Box sx={{textAlign:"left"}}>
+              <img src='./assets/images/contactus1.jpeg' style={{height:"200px",width:"200px"}} />
+             </Box>
+             <Box sx={{textAlign:"left",marginTop:"30px"}}>
+             <Typography sx={{fontSize:"18px"}}>
+              We look forward to welcoming you to Sankyfy and sharing in the joy of community and local commerce!
+             </Typography>
+             </Box>
+             
+             <Box sx={{textAlign:"left",marginTop:"30px"}}>
+              <Typography sx={{fontSize:"16px"}}>Email : <span>sankyfy@gmail.com</span></Typography>
+              
+             </Box>
+
+             <Box sx={{textAlign:"left",marginTop:"30px"}}>
+              <Typography sx={{fontSize:"16px"}}>Phone :  <span>9901450678 (Sandesh Singh Rajput)</span></Typography>
+             
+             </Box>
+             
+          
+
+            
+
+           </Box>
         </Grid>
 
-        <Grid item xs={12} sm={6} md={6} sx={{padding:"10px"}}>
+
+            <Grid item xs={12} sm={12} md={6} sx={{padding:"10px"}}>
         <Box
         sx={{
-        
-          width: "100%", // Adjust as needed
-          height: "calc(100vh - 2rem)", // Adjust as needed
           display: "flex",
           justifyContent: "left",
           alignItems: "center",
@@ -82,7 +112,7 @@ export const ContactUs = () => {
         }}
       >
      
-        <Box sx={{marginLeft:"50px"}}>
+        <Box  sx={{position:"relative"}}>
           <Card id="cardContactus">
             <CardContent>
               <Box>
@@ -118,7 +148,7 @@ export const ContactUs = () => {
                 }}
               >
                 <Box sx={{textAlign:"left",marginTop:"20px"}}>
-                    <Typography sx={{fontSize:"14px"}}>For further questions, including partnership opportunities, please email hello@creative-tim.com or contact using our contact form.</Typography>
+                    <Typography sx={{fontSize:"14px"}}>For further questions, including partnership opportunities, please email sankyfy@gmail.com or contact using our contact form.</Typography>
                 </Box>
                 <Box sx={{marginTop:"40px"}}>
                 <Grid container spacing={2} >
@@ -183,10 +213,15 @@ export const ContactUs = () => {
       </Box>
         </Grid>
 
+
+       
+
+        
+
        
       
        
-      </Grid>
+            </Grid>
             </Box>
        
         </Box>

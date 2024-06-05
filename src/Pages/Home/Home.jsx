@@ -236,9 +236,11 @@ export const Home = () => {
     <Box>
        <NavBar />
         <Box  sx={{
-        backgroundImage: 'url(./assets/images/bg-presentation.jpg)',
-        backgroundSize: 'cover', // This ensures the image covers the entire Box
-        backgroundPosition: 'top', // This centers the image within the Box
+        // backgroundImage: 'url(./assets/images/bg-presentation.jpg)',
+        // backgroundImage: 'url(./assets/images/products/product-6-min.jpg)',
+        // backgroundSize: 'cover',
+        // backgroundPosition: 'top', 
+        background:"#0a253b",
         width: '100%', // Adjust as needed
         height: '75vh', // Adjust as needed
         display:"flex",
@@ -288,7 +290,8 @@ export const Home = () => {
 
 
            {
-    (selectedState !== "" ||  selectedCategory !== "") &&  <Grid item xs={12} sm={6} md={2} >
+    (selectedState !== "" ||  selectedCategory !== "") && 
+     <Grid item xs={12} sm={6} md={2} >
     <Button fullWidth onClick={applyFilter}  variant='contained' >
 Apply
 </Button>
@@ -296,7 +299,8 @@ Apply
    }
 
 {
-    (selectedState !== "" ||  selectedCategory !== "") &&  <Grid item xs={12} sm={6} md={1} >
+    (selectedState !== "" ||  selectedCategory !== "") &&  
+    <Grid item xs={12} sm={6} md={1} >
     <Button fullWidth onClick={resetFilter}  variant='contained' sx={{background:"crimson"}}>
         Reset
       </Button>
@@ -343,7 +347,7 @@ Apply
             </Box>
       
             <Box sx={{ marginTop: "60px" }}>
-              <Grid container spacing={2}>
+              <Grid container spacing={2} sx={{ width: "100%", justifyContent: "center", alignItems: "center" }}>
                 {
                   paginatedData2.map((el, index) => (
                     <Grid item xs={12} sm={6} md={4} key={index}>
@@ -371,7 +375,7 @@ Apply
       </Box>
 
       <Box sx={{ marginTop: "60px" }}>
-        <Grid container spacing={2}>
+        <Grid container spacing={2} sx={{ width: "100%", justifyContent: "center", alignItems: "center" }}>
           {
             paginatedData.map((el, index) => (
               <Grid item xs={12} sm={6} md={4} key={index}>
@@ -390,7 +394,7 @@ Apply
             
 
               <Box sx={{marginTop:"60px"}}>
-             <Box className={isMobile ? "" : 'sw'}>
+             <Box sx={{width:`${isMobile ? "100%" : "60%"}`,margin:"auto"}}>
               <Box>
               <Box sx={{marginTop:"30px"}}>
                   <Typography sx={{fontSize:"3.25rem",fontWeight:"bold"}}>Our Services</Typography>
@@ -398,7 +402,7 @@ Apply
                 </Box>
               </Box>
              <Box sx={{marginTop:"30px"}}>
-                <Grid container spacing={2}>
+                <Grid container spacing={2} sx={{ width: "100%", justifyContent: "center", alignItems: "center" }}>
                   {
                     OurServicesData.map((el,index)=>{
                       return   <Grid onClick={()=>handelLogin(el.path)} item xs={12} sm={6} md={6} key={index}>
@@ -458,8 +462,8 @@ Apply
                 </Box>
 
                 <Box sx={{marginTop:"30px"}}>
-                <Grid container spacing={2}>
-                <Grid container spacing={2}>
+              
+                <Grid container spacing={2} sx={{ width: "100%", justifyContent: "center", alignItems: "center" }}>
                 {
                   randomShopData[0].shops.map((el,index)=>{
                     return <Grid key={index} item xs={12} sm={6} md={4}>
@@ -469,9 +473,7 @@ Apply
                 }
        
                </Grid>
-      
-       
-      </Grid>
+   
                 </Box>
            
                </Box>
@@ -485,7 +487,7 @@ Apply
                 </Box>
 
                 <Box sx={{marginTop:"30px"}}>
-                <Grid container spacing={2}>
+                <Grid container spacing={2} sx={{ width: "100%", justifyContent: "center", alignItems: "center" }}>
                 {
                   randomShopData[1].shops.map((el,index)=>{
                     return <Grid key={index} item xs={12} sm={6} md={4}>

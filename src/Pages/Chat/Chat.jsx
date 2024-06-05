@@ -7,9 +7,11 @@ import { ChatCardShopKeeper } from '../../Components/Cards/ChatCardShopKeeper';
 import SendIcon from '@mui/icons-material/Send';
 import axios from 'axios';
 import { Base_Url } from '../../Configs/BaseUrl';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useNavigation, useParams } from 'react-router-dom';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 export const Chat = () => {
     const {id} = useParams()
+  
     const userDetails = JSON.parse(localStorage.getItem("userDetails")) || null;
     const [chatData, setChatData] = useState([]);
     const [shopData,setShopData] = useState(null);
@@ -82,6 +84,9 @@ export const Chat = () => {
         }
       };
 
+      const handelGoBack =()=>{
+        window.history.back();
+      }
       useEffect(() => {
         getChat();
     
@@ -108,17 +113,18 @@ export const Chat = () => {
         backgroundPosition: 'top', // This centers the image within the Box
         width: '100%', // Adjust as needed
         height: '100vh', // Adjust as needed
-        display: "flex", 
-        justifyContent: "center",
-        alignItems:"center",
-        flexDirection:"column",
+       
 
         position:"relative",
 
    
       }}>
-          <Box sx={{width:"80%",border:"1px solid grey",padding:"20px",borderRadius:"10px",borderBottom:"0px"}}>
-            <Box sx={{display:"flex",justifyContent:"left",alignItems:"center"}}>
+        <Box sx={{textAlign:"left",paddingTop:"20px",paddingBottom:"20px"}}>
+        <ArrowBackIosIcon  onClick={handelGoBack} style={{fontSize:"30px",marginLeft:"30px",color:"#fff"}}/>
+        </Box>
+          <Box sx={{width:"80%",borderRadius:"10px",borderBottom:"0px",margin:"auto"}}>
+
+            <Box >
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
             {shopData && shopData.shopName.charAt(0)}
           </Avatar>
@@ -131,7 +137,7 @@ export const Chat = () => {
 
 
 
-            <Box sx={{height:"80vh",overflow:"auto",marginTop:"60px"}}>
+            <Box sx={{height:"78vh",overflow:"auto",marginTop:"0px"}}>
                  
             {chatData.map((msg) => (
         <Box

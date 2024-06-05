@@ -247,9 +247,10 @@ export const Home = () => {
         position:"relative",
         flexDirection:"column"
       }}>
-           <Box sx={{display:"flex",justifyContent:"space-between",alignItems:"center",marginTop:"20px"}}>
-          
-          <Button onClick={handelCategoryopen} variant='contained' sx={{color:"black",background:"#fff",  '&:hover': {
+           <Box sx={{display:"flex",justifyContent:"center",alignItems:"center",marginTop:"20px",width:`${isMobile ? '80%' : "60%"}`}}>
+           <Grid container spacing={2} sx={{ width: "100%", justifyContent: "center", alignItems: "center" }}>
+             <Grid item xs={12} sm={6} md={3}  >
+             <Button fullWidth onClick={handelCategoryopen} variant='contained' sx={{color:"black",background:"#fff",  '&:hover': {
           color: "#fff",
         }}}>
           {
@@ -257,9 +258,10 @@ export const Home = () => {
           }
           
           </Button>
+            </Grid>
 
-
-          <Button onClick={handelStateopen} variant='contained' sx={{color:"black",background:"#fff",marginLeft:"20px",  '&:hover': {
+            <Grid item xs={12} sm={6} md={3} >
+            <Button fullWidth onClick={handelStateopen} variant='contained' sx={{color:"black",background:"#fff",  '&:hover': {
           color: "#fff",
         }}}>
           
@@ -267,34 +269,46 @@ export const Home = () => {
             selectedState == ""  ? "Select State" : selectedState
           }
         </Button>
+            </Grid>
+        
 
-        {
-          selectedState !== "" &&   <Button onClick={handelCityopen} variant='contained' sx={{color:"black",background:"#fff",marginLeft:"20px",  '&:hover': {
-            color: "#fff",
-          }}}>
-            
             {
-              selectedCity == ""  ? "Select City" : selectedCity
-            }
-            </Button>
+          selectedState !== "" &&    <Grid item xs={12} sm={6} md={3}  >
+          <Button fullWidth onClick={handelCityopen} variant='contained' sx={{color:"black",background:"#fff",  '&:hover': {
+          color: "#fff",
+        }}}>
+          
+          {
+            selectedCity == ""  ? "Select City" : selectedCity
+          }
+          </Button>
+          </Grid>
         }
-         
-   {
-    (selectedState !== "" ||  selectedCategory !== "") &&  <Button onClick={applyFilter}  variant='contained' sx={{marginLeft:"20px"}}>
-    Apply Filter
-  </Button>
+           
+
+
+           {
+    (selectedState !== "" ||  selectedCategory !== "") &&  <Grid item xs={12} sm={6} md={2} >
+    <Button fullWidth onClick={applyFilter}  variant='contained' >
+Apply
+</Button>
+     </Grid>
    }
 
 {
-    (selectedState !== "" ||  selectedCategory !== "") &&  <Button onClick={resetFilter}  variant='contained' sx={{marginLeft:"20px",background:"crimson"}}>
-    Reset Filter
-  </Button>
+    (selectedState !== "" ||  selectedCategory !== "") &&  <Grid item xs={12} sm={6} md={1} >
+    <Button fullWidth onClick={resetFilter}  variant='contained' sx={{background:"crimson"}}>
+        Reset
+      </Button>
+                </Grid>
    }
-        
-         
 
 
-          
+
+
+
+            </Grid>
+
        </Box>
       
        <Box sx={{marginTop:"30px"}}>

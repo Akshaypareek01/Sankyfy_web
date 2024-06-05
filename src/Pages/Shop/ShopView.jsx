@@ -11,7 +11,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Base_Url } from '../../Configs/BaseUrl';
 import StoreIcon from '@mui/icons-material/Store';
@@ -40,6 +40,7 @@ const style2 = {
 
 export const ShopView = () => {
   const {id} = useParams();
+  const navigation = useNavigate()
   const [shopData,setShopData] = useState(null);
   const [shopFeedbackData,setShopFeedbackData] = useState(null);
   const auth = localStorage.getItem("auth") || false;
@@ -152,6 +153,11 @@ export const ShopView = () => {
     window.open(googleMapsUrl, '_blank');
   };
 
+  const handelChatus = ()=>{
+    window.location.href = `chat/${shopData.shopkeeperId._id}`
+  }
+
+
   useEffect(() => {
      if(shopData){
       const script = document.createElement('script');
@@ -182,12 +188,12 @@ export const ShopView = () => {
                 <NavBar />
                 <Box  sx={{
         width: '100%', // Adjust as needed
-        height: '75vh', // Adjust as needed
+        
         display:"flex",
         justifyContent:"center",
         alignItems:"center",
       }}>
-           <Swiper style={{height:"100%",padding:"0px"}} 
+           <Swiper style={{padding:"0px"}} 
     modules={[Navigation, Pagination, Scrollbar, A11y,Autoplay]}
     autoplay={{ delay: 2000 }}
     >
@@ -196,7 +202,7 @@ export const ShopView = () => {
             return <SwiperSlide key={index} >
                     
                       
-                      <img src={`${Base_Url}api/${el.path}`} style={{width:"100%",height:"100%",borderRadius:"8px",}} alt="img"/>
+                      <img src={`${Base_Url}api/${el.path}`} style={{width:"100%",height:"500px",borderRadius:"8px",}} alt="img"/>
                    
                  </SwiperSlide>
         })
@@ -329,15 +335,28 @@ export const ShopView = () => {
                 </Box>
 
                 <Box sx={{marginTop:"60px"}}>
+                <Grid container spacing={2} sx={{ justifyContent: "center", alignItems: "center" }}>
+                <Grid item xs={12} sm={12} md={4}> 
                 {
   userDetails &&
-                <Button variant='contained' sx={{background:"#344767"}}>Chat with us</Button>
+                <Button fullWidth onClick={handelChatus} variant='contained' sx={{background:"#344767"}}>Chat with us</Button>
 }
-                  <Button variant='contained' sx={{marginLeft:"10px",background:"#344767"}} onClick={handleDirectionClick}>Get Directions</Button>
+                </Grid>
 
-{
-  userDetails && <Button variant='contained' sx={{marginLeft:"10px",background:"#344767"}} onClick={handleOpen2}>Provide Feedback</Button>
+                <Grid item xs={12} sm={12} md={4}> 
+                <Button fullWidth variant='contained' sx={{background:"#344767"}} onClick={handleDirectionClick}>Get Directions</Button>
+                </Grid>
+
+                <Grid item xs={12} sm={12} md={4}> 
+                {
+  userDetails && <Button fullWidth variant='contained' sx={{background:"#344767"}} onClick={handleOpen2}>Provide Feedback</Button>
 }
+                </Grid>
+                   </Grid>
+
+                  
+
+
                   
 
                 </Box>

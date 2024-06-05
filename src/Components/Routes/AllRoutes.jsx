@@ -42,6 +42,7 @@ export const AllRoutes = () => {
       <Route path="/verify" element={<UnderVerifications/>}></Route>
       <Route path="/shops" element={<Shop/>}></Route>
       <Route path="/shop-view/:id" element={<ShopView/>}></Route>
+      <Route path="/shop-view/chat/:id" element={<Chat/>}></Route>
       <Route path="/about-us" element={<AboutUs/>}></Route>
       <Route path="/contact-us" element={<ContactUs/>}></Route>
       <Route path="/chat/:id" element={<Chat/>}></Route>

@@ -48,7 +48,8 @@ export const StoreCards =({data})=> {
   }
 
   const handelChatus = ()=>{
-    navigation(`chat/${data.shopkeeperId._id}`)
+    console.log("Chat us Data ===>",data)
+    navigation(`chat/${data.shopkeeperId}`)
   }
 
   return (

@@ -25,6 +25,10 @@ export const Login = () => {
 
   });
 
+  const handelShopLogin =()=>{
+    navigation("/signup-shopkeeper")
+  }
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -107,10 +111,12 @@ export const Login = () => {
                   </CardContent>
                 </Card>
               </Box>
-
+               <Box sx={{textAlign:"left",marginTop:"10px"}}>
+                <Typography sx={{fontSize:"14px"}}>Are you shop owner ? <span onClick={handelShopLogin} style={{color:"#1976d2",cursor: 'pointer'}}>Login</span></Typography>
+               </Box>
               <Box
                 sx={{
-                  marginTop: "30px",
+                  marginTop: "20px",
                   display: "flex",
                   justifyContent: "left",
                   alignContent: "center",

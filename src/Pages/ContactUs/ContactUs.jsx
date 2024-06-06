@@ -68,7 +68,7 @@ export const ContactUs = () => {
         marginBottom:"100px"
 
       }}>
-        <Box sx={{width:`${isMobile ? '80%' : "60%"}`}}>
+        <Box sx={{width:`${isMobile ? '80%' : "70%"}`}}>
             <Box sx={{paddingTop:"20px",width:"100%"}}>
             <Grid container spacing={2}  >
 

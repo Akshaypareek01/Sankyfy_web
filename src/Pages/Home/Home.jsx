@@ -392,13 +392,17 @@ Apply
     </Box>
   </Box>
             
+            
 
               <Box sx={{marginTop:"60px"}}>
              <Box sx={{width:`${isMobile ? "100%" : "60%"}`,margin:"auto"}}>
               <Box>
-              <Box sx={{marginTop:"30px"}}>
-                  <Typography sx={{fontSize:"3.25rem",fontWeight:"bold"}}>Our Services</Typography>
-                  <Typography sx={{color:"#7b809a",fontSize:"1.25rem",marginTop:"10px"}}>Explore our comprehensive platform designed to connect you with local shops effortlessly <br/> and empower shopkeepers with tools to showcase their businesses. </Typography>
+              <Box id="cardOurService" sx={{marginTop:"30px"}}>
+                  <Typography sx={{fontSize:"3.25rem",fontWeight:"bold",color:"#fff"}}>Our Services</Typography>
+                 
+                </Box>
+                <Box sx={{marginTop:"30px"}}>
+                <Typography sx={{color:"#7b809a",fontSize:"1.25rem",marginTop:"10px"}}>Explore our comprehensive platform designed to connect you with local shops effortlessly <br/> and empower shopkeepers with tools to showcase their businesses. </Typography>
                 </Box>
               </Box>
              <Box sx={{marginTop:"30px"}}>

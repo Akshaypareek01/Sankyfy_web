@@ -118,7 +118,7 @@ export const NavBar = () => {
               style={{ fontSize: '14px', fontWeight: 'bold', fontFamily: 'Roboto,sans-serif', color: '#344767', cursor: 'pointer' }}
               onClick={() => handleClick('/')}
             >
-              SankyFy
+              SankyFy.com
             </Typography>
           </Box>
 

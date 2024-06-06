@@ -4,19 +4,24 @@ import React, { useEffect, useState } from 'react'
 import { Base_Url } from '../../Configs/BaseUrl';
 import HighlightOffRoundedIcon from '@mui/icons-material/HighlightOffRounded';
 const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: '90vw', // Use viewport width for responsiveness
-    maxWidth: '600px', // Set a maximum width for larger screens
-    height: 'auto', // Let height adjust based on content
-    maxHeight: '90vh', // Set a maximum height for responsiveness
-    bgcolor: 'background.paper',
-    boxShadow: 24,
-    p: 4,
-    overflow: 'auto', // Add overflow for scrollability
-  };
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: '90vw', // Use viewport width for responsiveness
+  maxWidth: '90vw', // Use viewport width for max width as well for mobile screens
+  height: 'auto', // Let height adjust based on content
+  maxHeight: '70vh', // Set a maximum height for responsiveness
+  bgcolor: 'background.paper',
+  boxShadow: 24,
+  p: 2, // Reduced padding for mobile
+  overflow: 'auto', // Add overflow for scrollability
+  borderRadius: '8px', // Add border-radius for better aesthetics
+  '@media (min-width: 600px)': {
+    maxWidth: '600px', // Adjust max-width for larger screens
+    p: 4, // Increase padding for larger screens
+  }
+};
 export const SelectCityModel = ({open, setOpen,selectedValue,setSelectedValue,selectedState}) => {
  const [data,setData] = useState([]);
   const handleOpen = () => setOpen(true);

@@ -10,7 +10,8 @@ export const ContactUs = () => {
   const [formValues, setFormValues] = useState({
     fullName: '',
     email: '',
-    message: ''
+    message: '',
+    mobile:''
   });
 
   const handleChange = (event) => {
@@ -33,7 +34,7 @@ export const ContactUs = () => {
     emailjs.send('service_kdf9dmb', 'template_ip144in', {
       to_name: "sankyfy",
       from_name: formValues.fullName + `(${formValues.email})`,
-      message: formValues.message ,
+      message: formValues.message + `By ${formValues.mobile}` ,
       },'99P-9lUmJKrK2CC-V')
       .then((response) => {
         console.log('SUCCESS!', response.status, response.text);
@@ -89,7 +90,7 @@ export const ContactUs = () => {
              </Box>
 
              <Box sx={{textAlign:"left",marginTop:"30px"}}>
-              <Typography sx={{fontSize:"16px"}}>Phone :  <span>9901450678 (Sandesh Singh Rajput)</span></Typography>
+              <Typography sx={{fontSize:"16px"}}>Phone :  <span>9901450678</span></Typography>
              
              </Box>
              
@@ -163,7 +164,19 @@ export const ContactUs = () => {
                     onChange={handleChange}
                   />
             </Grid>
+
             <Grid item xs={12} sm={6} md={6} >
+        <TextField
+                    id="inputBox"
+                    sx={{ width: "100%" }}
+                    label="Mobile"
+                    variant="standard"
+                    name='mobile'
+                    value={formValues.mobile}
+          onChange={handleChange}
+                  />
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} >
         <TextField
                     id="inputBox"
                     sx={{ width: "100%" }}
@@ -174,6 +187,8 @@ export const ContactUs = () => {
           onChange={handleChange}
                   />
             </Grid>
+
+          
 
 
             <Grid item xs={12} sm={12} md={12} >

@@ -61,8 +61,13 @@ export const ShopView = () => {
   };
 
   const handleOpen2 = () => {
-
+  if(userDetails){
     setOpen2(true)
+    return;
+  }
+   
+
+    alert("Please login to provide feedback about shop")
   };
   const handleClose2 = () => {
     setOpen2(false);
@@ -154,7 +159,13 @@ export const ShopView = () => {
   };
 
   const handelChatus = ()=>{
-    window.location.href = `chat/${shopData.shopkeeperId._id}`
+    if(userDetails){
+        window.location.href = `chat/${shopData.shopkeeperId._id}`
+        return
+    }
+
+    alert("Please Login to chat with store owner")
+    
   }
 
 
@@ -337,10 +348,9 @@ export const ShopView = () => {
                 <Box sx={{marginTop:"60px"}}>
                 <Grid container spacing={2} sx={{ justifyContent: "center", alignItems: "center" }}>
                 <Grid item xs={12} sm={12} md={4}> 
-                {
-  userDetails &&
+            
                 <Button fullWidth onClick={handelChatus} variant='contained' sx={{background:"#344767"}}>Chat with us</Button>
-}
+
                 </Grid>
 
                 <Grid item xs={12} sm={12} md={4}> 
@@ -348,9 +358,8 @@ export const ShopView = () => {
                 </Grid>
 
                 <Grid item xs={12} sm={12} md={4}> 
-                {
-  userDetails && <Button fullWidth variant='contained' sx={{background:"#344767"}} onClick={handleOpen2}>Provide Feedback</Button>
-}
+            <Button fullWidth variant='contained' sx={{background:"#344767"}} onClick={handleOpen2}>Provide Feedback</Button>
+
                 </Grid>
                    </Grid>
 

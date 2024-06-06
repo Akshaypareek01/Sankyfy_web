@@ -24,6 +24,18 @@ export const ContactUs = () => {
 
   const handleSubmit = (event) => {
   // if(userDetails){
+  if(formValues.email === ''){
+    alert("Email is required");
+    return
+  }
+  if(formValues.mobile === ''){
+    alert("Mobile is required");
+    return
+  }
+  if(formValues.fullName === ''){
+    alert("Name is required");
+    return
+  }
     const templateParams = {
       user_name: formValues.fullName,
       user_email: formValues.email,

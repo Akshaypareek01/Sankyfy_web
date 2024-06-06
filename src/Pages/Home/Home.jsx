@@ -81,7 +81,7 @@ export const Home = () => {
   const [filteredData, setFilteredData] = useState([]);
   
   const itemsPerPage = 3;
-  const count = Math.ceil(shopData.length / itemsPerPage);
+  const count = Math.ceil(NearbyshopsData.length / itemsPerPage);
   const count2 = Math.ceil(filteredData.length / itemsPerPage);
   const handleChange = (event, value) => {
     setPage(value);
@@ -91,7 +91,7 @@ export const Home = () => {
     setPage2(value);
   };
   
-  const paginatedData = shopData.slice((page - 1) * itemsPerPage, page * itemsPerPage);
+  const paginatedData = NearbyshopsData.slice((page - 1) * itemsPerPage, page * itemsPerPage);
 
   const paginatedData2 = filteredData.slice((page2 - 1) * itemsPerPage, page2 * itemsPerPage);
 

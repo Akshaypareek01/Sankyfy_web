@@ -28,7 +28,7 @@ export const Chat = () => {
       
           if (response.status === 200) {
             const fetchedCategories = response.data.data;
-            console.log("Data ==>",fetchedCategories)
+            console.log("Data shp details ==>",fetchedCategories)
             setShopData(fetchedCategories);
            
           } else {
@@ -101,9 +101,9 @@ export const Chat = () => {
         getChat();
       },[update])
 
-    //   useEffect(()=>{
-    //     fetchShops()
-    //   },[])
+      useEffect(()=>{
+        fetchShops()
+      },[])
 
   return (
   <Box >
@@ -129,10 +129,10 @@ export const Chat = () => {
             {shopData && shopData.shopName.charAt(0)}
           </Avatar>
 
-          {/* <Box sx={{marginLeft:"10px",textAlign:"left"}}>
+          <Box sx={{marginLeft:"10px",textAlign:"left"}}>
             <Typography sx={{color:"#fff",fontSize:"14px"}}>{shopData && shopData.shopName}</Typography>
             <Typography sx={{color:"#fff",fontSize:"12px"}}>last seen : 2 hrs ago</Typography>
-          </Box> */}
+          </Box>
             </Box>
 
 

@@ -2,6 +2,7 @@ import { Box, Card, CardContent, Grid, Typography } from '@mui/material'
 import React from 'react'
 import { NavBar } from '../../Components/NavBar/NavBar'
 import { Footer } from '../../Components/Footer/Footer'
+import { isMobile } from '../../IsMobile/IsMobile'
 
 export const AboutUs = () => {
   return (
@@ -20,12 +21,12 @@ export const AboutUs = () => {
       }}>
    <Typography id='title1'>About us</Typography>
 </Box>
-<Box sx={{marginTop:"-60px"}}>
+<Box sx={{marginTop:"-190px"}}>
           <Card id="card1">
             <CardContent>
             <Box sx={{marginTop:"60px",marginBottom:"60px"}}>
 
-            <Grid container spacing={4} sx={{ width: "80%", justifyContent: "center",margin:"auto" }}>
+            <Grid container spacing={4} sx={{ width:`${isMobile ? '100%' : '80%'}`, justifyContent: "center",margin:"auto" }}>
               
             <Grid item xs={12} sm={12} md={12}  > 
             <Box sx={{textAlign:"left"}}>

@@ -3,6 +3,7 @@ import React from 'react'
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import YouTubeIcon from '@mui/icons-material/YouTube';
+import InstagramIcon from '@mui/icons-material/Instagram';
 import { isMobile } from '../../IsMobile/IsMobile';
 import { useNavigate } from 'react-router-dom';
 export const Footer = () => {
@@ -24,7 +25,8 @@ export const Footer = () => {
             </Box>
 
             <Box sx={{marginTop:"20px"}}>
-               <FacebookIcon sx={{color:"grey",fontSize:"22px",cursor: 'pointer'}}/>
+            <InstagramIcon sx={{color:"grey",fontSize:"22px",cursor: 'pointer'}}/>
+               <FacebookIcon sx={{color:"grey",fontSize:"22px",marginLeft:"10px",cursor: 'pointer'}}/>
                <TwitterIcon sx={{color:"grey",fontSize:"22px",marginLeft:"10px",cursor: 'pointer'}}/>
                <YouTubeIcon sx={{color:"grey",fontSize:"22px",marginLeft:"10px",cursor: 'pointer'}}/>
             </Box>

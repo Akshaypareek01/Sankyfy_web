@@ -7,6 +7,7 @@ import {
   Button,
   Card,
   CardContent,
+  Grid,
   Modal,
   Switch,
   TextField,
@@ -23,6 +24,7 @@ import { useNavigate } from "react-router-dom";
 
 import axios from 'axios';
 import { Base_Url } from "../../Configs/BaseUrl";
+import { isMobile } from "../../IsMobile/IsMobile";
 const style = {
   position: 'absolute',
   top: '50%',
@@ -274,7 +276,7 @@ const [GstPanImage,setGstPanImage] = useState(null);
     height: "100%",
     backgroundColor: "rgba(128, 128, 128, 0.5)" // Adjust the color and opacity as needed
   }}></div> */}
-        <Box >
+        <Box style={{width:`${isMobile ? "100%" : "50%"}`}}>
           <Card id="cardSignup" style={{position:"relative"}}>
             <CardContent>
               <Box>
@@ -458,18 +460,23 @@ const [GstPanImage,setGstPanImage] = useState(null);
                 }}
               >
              
-             <Box sx={{marginTop:"30px"}}>
+             <Box sx={{marginTop:"10px"}}>
                 <div style={{ display: "flex",justifyContent:"space-between", alignItems: "center" }}>
-                    <div >
+
+                <Grid container spacing={3} sx={{ width: "100%", justifyContent: "left", alignItems: "center",marginTop:"20px" }}>
+           
+
+           <Grid item xs={12} sm={6} md={3} >
+           <div style={{textAlign:"left"}}>
                      <div>
                      <span>Adhar or Pan Image</span>
                       </div> 
                       {
-                        AdharorPanImage && <div style={{display: "flex", alignItems: "center",justifyContent:"center" }}>
+                        AdharorPanImage && <div style={{display: "flex", alignItems: "center",justifyContent:"left" }}>
                         <div
                           style={{
-                            width: "150px",
-                            height: "150px",
+                            width: "60px",
+                            height: "60px",
                             border: "1px solid #ddd",
                             background: `url(${URL.createObjectURL(AdharorPanImage)}) center/cover no-repeat`,
                             cursor: "pointer",
@@ -488,17 +495,19 @@ const [GstPanImage,setGstPanImage] = useState(null);
                       <input  type='file'    onChange={handleFileChange3} id="noborder" />
         
                     </div>
+            </Grid>
 
-                    <div >
+            <Grid item xs={12} sm={6} md={3}  >
+            <div style={{textAlign:"left"}} >
                     <div>
                      <span>Gst Certificate Image</span>
                       </div> 
                       {
-                        GetCertificateImage && <div style={{display: "flex", alignItems: "center",justifyContent:"center" }}>
+                        GetCertificateImage && <div style={{display: "flex", alignItems: "center",justifyContent:"left" }}>
                         <div
                           style={{
-                            width: "150px",
-                            height: "150px",
+                            width: "60px",
+                            height: "60px",
                             border: "1px solid #ddd",
                             background: `url(${URL.createObjectURL(GetCertificateImage)}) center/cover no-repeat`,
                             cursor: "pointer",
@@ -515,17 +524,21 @@ const [GstPanImage,setGstPanImage] = useState(null);
                     
                       <input  type='file'    onChange={handleFileChange4} id="noborder" />
                     </div>
+</Grid>
 
-                    <div >
+<Grid item xs={12} sm={6} md={3}  >
+     
+
+<div style={{textAlign:"left"}}>
                     <div>
                      <span>Gst Pan Image</span>
                       </div> 
                       {
-                        GstPanImage && <div style={{display: "flex", alignItems: "center",justifyContent:"center" }}>
+                        GstPanImage && <div style={{display: "flex", alignItems: "center",justifyContent:"left" }}>
                         <div
                           style={{
-                            width: "150px",
-                            height: "150px",
+                            width: "60px",
+                            height: "60px",
                             border: "1px solid #ddd",
                             background: `url(${URL.createObjectURL(GstPanImage)}) center/cover no-repeat`,
                             cursor: "pointer",
@@ -542,6 +555,11 @@ const [GstPanImage,setGstPanImage] = useState(null);
                     
                       <input  type='file'    onChange={handleFileChange5} id="noborder" />
                     </div>
+</Grid>
+            </Grid>
+                  
+
+              
                   </div>
                 </Box>
                

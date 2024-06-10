@@ -249,8 +249,16 @@ export const Home = () => {
         position:"relative",
         flexDirection:"column"
       }}>
-           <Box sx={{display:"flex",justifyContent:"center",alignItems:"center",marginTop:"20px",width:`${isMobile ? '80%' : "60%"}`}}>
-           <Grid container spacing={2} sx={{ width: "100%", justifyContent: "center", alignItems: "center" }}>
+           <Box sx={{display:"flex",justifyContent:"center",alignItems:"center",flexDirection:"column",marginTop:"20px",width:`${isMobile ? '80%' : "60%"}`}}>
+            {
+              !isMobile && <Box>
+              <Typography sx={{fontSize:"38px",color:"#fff"}}>Welcome to SankfYf, We have everything for Shopkeepers & consumer.</Typography>
+              </Box>
+              
+            }
+           <Grid container spacing={2} sx={{ width: "100%", justifyContent: "center", alignItems: "center",marginTop:"20px" }}>
+           
+
              <Grid item xs={12} sm={6} md={3}  >
              <Button fullWidth onClick={handelCategoryopen} variant='contained' sx={{color:"black",background:"#fff",  '&:hover': {
           color: "#fff",

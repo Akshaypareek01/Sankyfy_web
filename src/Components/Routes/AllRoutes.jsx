@@ -13,11 +13,13 @@ import { ShopView } from "../../Pages/Shop/ShopView";
 import { ShopKeeperSignup } from "../../Pages/Signup/ShopKeeperSignup";
 import { UnderVerifications } from "../../Pages/UnderVerifications";
 import { Chat } from "../../Pages/Chat/Chat";
+import ScrollToTop from "../ScrollTop/ScrollTop";
 
 export const AllRoutes = () => {
 //   const mobileView = useSelector((state) => state.mobileView);
   return (
     <BrowserRouter>
+     <ScrollToTop />
     <Routes>
      
       {/* <Route

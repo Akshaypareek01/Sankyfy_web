@@ -97,10 +97,13 @@ export const StoreCards =({data})=> {
      
       <CardActions disableSpacing sx={{display:"flex",justifyContent:"right",alignItems:"center"}}>
         <IconButton onClick={handelChatus} aria-label="add to favorites">
-          <MessageIcon />
+          <MessageIcon color='primary'/>
+          <span style={{fontSize:"14px",fontWeight:"bold"}}>Chat</span>
         </IconButton>
         <IconButton onClick={handleDirectionClick} aria-label="share">
-          <DirectionsIcon />
+          
+          <DirectionsIcon id='iconB' />
+          <span style={{fontSize:"14px",fontWeight:"bold"}}>Direction</span>
         </IconButton>
       
       </CardActions>

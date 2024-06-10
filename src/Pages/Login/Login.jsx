@@ -16,6 +16,7 @@ import animationData from "./Animation - 1716038571450.json"
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Base_Url } from "../../Configs/BaseUrl";
+import { isMobile } from "../../IsMobile/IsMobile";
 export const Login = () => {
   const navigation =  useNavigate()
   const [formData, setFormData] = useState({
@@ -87,12 +88,29 @@ export const Login = () => {
     height: "100%",
     backgroundColor: "rgba(128, 128, 128, 0.5)" // Adjust the color and opacity as needed
   }}></div> */}
-        <Box>
-          <Card id="cardLogin">
+        <Box style={{width:`${isMobile ? "100%" : "50%"}`}}>
+          <Card id={isMobile ? '' : "cardLogin"} style={{position:"relative"}}>
             <CardContent>
-              <Box>
+            <Box>
                 <Card id="cardLogin2">
                   <CardContent>
+                  {
+                      !isMobile && <Box style={{position:"absolute",top:10,left: "50%",
+                        transform: "translateX(-50%)",}}>
+                                      <Box sx={{textAlign:"center",width:"100%"}}>
+                                      <Typography
+                                        sx={{
+                                          color: "#fff",
+                                          fontSize: "14px",
+                                        }}
+                                      >
+                                       Are you looking for a good offline store or shop nearby?
+                                      </Typography>
+                                      </Box>
+                                    
+                                    </Box>
+                    }
+                    
                     <Box style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
                       <Box>
                       <Lottie options={defaultOptions} height={170} width={170} />
@@ -111,6 +129,8 @@ export const Login = () => {
                   </CardContent>
                 </Card>
               </Box>
+              
+             
                <Box sx={{textAlign:"left",marginTop:"10px"}}>
                 <Typography sx={{fontSize:"14px"}}>Are you shop owner ? <span onClick={handelShopLogin} style={{color:"#1976d2",cursor: 'pointer'}}>Login</span></Typography>
                </Box>

@@ -22,6 +22,7 @@ import { useNavigate } from "react-router-dom";
 
 import axios from 'axios';
 import { Base_Url } from "../../Configs/BaseUrl";
+import { isMobile } from "../../IsMobile/IsMobile";
 const style = {
   position: 'absolute',
   top: '50%',
@@ -227,12 +228,29 @@ export const Signup = () => {
     height: "100%",
     backgroundColor: "rgba(128, 128, 128, 0.5)" // Adjust the color and opacity as needed
   }}></div> */}
-        <Box >
+        <Box style={{width:`${isMobile ? "100%" : "50%"}`}}>
           <Card id="cardSignup" style={{position:"relative"}}>
             <CardContent>
               <Box>
                 <Card id="cardSignup2">
                   <CardContent>
+                  {
+                      !isMobile && <Box style={{position:"absolute",top:10,left: "50%",
+                        transform: "translateX(-50%)",}}>
+                                      <Box sx={{textAlign:"center",width:"100%"}}>
+                                      <Typography
+                                        sx={{
+                                          color: "#fff",
+                                          fontSize: "14px",
+                                        }}
+                                      >
+                                       Are you looking for a good offline store or shop nearby?
+                                      </Typography>
+                                      </Box>
+                                    
+                                    </Box>
+                    }
+                    
                     <Box style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
                       <Box>
                       <Lottie options={defaultOptions} height={170} width={170} />

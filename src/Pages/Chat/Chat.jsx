@@ -24,7 +24,7 @@ export const Chat = () => {
 
     const fetchShops = async () => {
         try {
-          const response = await axios.get(`${Base_Url}api/shop/${id}`);
+          const response = await axios.get(`${Base_Url}api/shopkeepers/${id}`);
       
           if (response.status === 200) {
             const fetchedCategories = response.data.data;
@@ -108,9 +108,10 @@ export const Chat = () => {
   return (
   <Box >
        <Box  sx={{
-        backgroundImage: `linear-gradient(195deg, rgba(66, 66, 74, 0.6), rgba(25, 25, 25, 0.6)),url(${chatbg})`,
-        backgroundSize: 'cover', // This ensures the image covers the entire Box
-        backgroundPosition: 'top', // This centers the image within the Box
+        // backgroundImage: `linear-gradient(195deg, rgba(66, 66, 74, 0.6), rgba(25, 25, 25, 0.6)),url(${chatbg})`,
+        // backgroundSize: 'cover',
+        // backgroundPosition: 'top',
+        background:"#fff",
         width: '100%', // Adjust as needed
         height: '100vh', // Adjust as needed
        
@@ -120,18 +121,22 @@ export const Chat = () => {
    
       }}>
         <Box sx={{textAlign:"left",paddingTop:"20px",paddingBottom:"20px"}}>
-        <ArrowBackIosIcon  onClick={handelGoBack} style={{fontSize:"30px",marginLeft:"30px",color:"#fff"}}/>
+        {/* <ArrowBackIosIcon  onClick={handelGoBack} style={{fontSize:"30px",marginLeft:"30px",color:"black"}}/> */}
         </Box>
           <Box sx={{width:"80%",borderRadius:"10px",borderBottom:"0px",margin:"auto"}}>
+          
+            <Box sx={{display:"flex"}}>
+            <Box sx={{display:"flex",justifyContent:"center",alignItems:"center"}}>
+        <ArrowBackIosIcon  onClick={handelGoBack} style={{fontSize:"26px",color:"black"}}/>
+        </Box>
 
-            <Box >
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            {shopData && shopData.shopName.charAt(0)}
+            {shopData && shopData.name.charAt(0)}
           </Avatar>
 
           <Box sx={{marginLeft:"10px",textAlign:"left"}}>
-            <Typography sx={{color:"#fff",fontSize:"14px"}}>{shopData && shopData.shopName}</Typography>
-            <Typography sx={{color:"#fff",fontSize:"12px"}}>last seen : 2 hrs ago</Typography>
+            <Typography sx={{fontSize:"14px"}}>{shopData && shopData.name}</Typography>
+            <Typography sx={{fontSize:"12px"}}>Shop Owner</Typography>
           </Box>
             </Box>
 
@@ -170,10 +175,10 @@ export const Chat = () => {
           </Box>
         
           <Box sx={{ position: "absolute", bottom: 30, width: "100vw", display: "flex", justifyContent: "center" }}>
-    <Box style={{width: "80vw", background: "#fff", borderRadius: "50px",display:"flex",justifyContent:"left",alignItems:"center"}} >
-        <input  onKeyPress={handleKeyPress} value={msg} onChange={(e)=>setMsg(e.target.value)} placeholder='type your message ...' style={{ width:"94%",padding:"20px",border:"none", borderRadius: "50px"}} />
-        <Box sx={{display:"flex",justifyContent:"right",alignItems:"center"}}>
-          <SendIcon onClick={handelMsgSend} style={{fontSize:"30px",color:"green"}} />
+    <Box style={{width: "80vw", background: "#fff", borderRadius: "50px",display:"flex",justifyContent:"left",alignItems:"center",border:"1px solid grey"}} >
+        <input  onKeyPress={handleKeyPress} value={msg} onChange={(e)=>setMsg(e.target.value)} placeholder='type your message ...' style={{width:"94%",padding:"20px", borderRadius: "50px",outline:"none",border:"none"}} />
+        <Box sx={{display:"flex",justifyContent:"center",alignItems:"center",minWidth:"70px"}}>
+          <SendIcon onClick={handelMsgSend} color='primary' style={{fontSize:"30px"}} />
         </Box>
     </Box>
 </Box>

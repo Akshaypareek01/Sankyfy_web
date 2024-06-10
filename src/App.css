@@ -1,5 +1,9 @@
-*{
+p{
   color:#344767;
+}
+
+#iconB{
+  color: black !important;
 }
 
 .App {

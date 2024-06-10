@@ -13,7 +13,7 @@ export const OurServicesCard =({data}) =>{
         component="img"
         alt="services"
         height="180"
-        image="./assets/images/shop2Services.jpeg"
+        image={data.img}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">

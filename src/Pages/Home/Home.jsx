@@ -15,6 +15,8 @@ import { SelectCategoryModel } from '../../Components/Models/SelectCategoryModel
 import { SelectCityModel } from '../../Components/Models/SelectCityModel';
 import { SelectStateModel } from '../../Components/Models/SelectStateModel';
 import { isMobile } from '../../IsMobile/IsMobile';
+import OurS1 from "./ourSU.jpg"
+import OurS2 from "./shop2Services.jpeg"
 const Item = styled(Paper)(({ theme }) => ({
 
 
@@ -79,7 +81,7 @@ export const Home = () => {
   const [selectedState,setSelectedState] = useState("");
 
   const [filteredData, setFilteredData] = useState([]);
-  
+  const [shopFeedbackData,setShopFeedbackData] = useState(null);
   const itemsPerPage = 3;
   const count = Math.ceil(NearbyshopsData.length / itemsPerPage);
   const count2 = Math.ceil(filteredData.length / itemsPerPage);
@@ -97,15 +99,15 @@ export const Home = () => {
 
   useEffect(() => {
     if (NearbyshopsData && NearbyshopsData.length > 0) {
-      const randomShops = getRandomShopsByCity(NearbyshopsData);
+      const randomShops = getRandomShopsByCity(NearbyshopsData,shopFeedbackData,'Good');
       console.log("Random shops data=====>",randomShops)
       setRandomShopData(randomShops);
     }
   }, [NearbyshopsData]);
 
   const OurServicesData = [
-    {title:"Users",text:"At our platform, we provide an exceptional service that allows you to seamlessly discover and interact with shops in your vicinity.",path:"/login"},
-    {title:"Shopkeepers",text:"We also provide a robust suite of tools for shopkeepers to manage and promote their businesses effectively. By registering and completing the KYC process",path:"signup-shopkeeper"}
+    {title:"Users",text:"At our platform, we provide an exceptional service that allows you to seamlessly discover and interact with shops in your vicinity.",path:"/login",img:OurS1},
+    {title:"Shopkeepers",text:"We also provide a robust suite of tools for shopkeepers to manage and promote their businesses effectively. By registering and completing the KYC process",path:"signup-shopkeeper",img:OurS2}
   
   ]
 
@@ -155,12 +157,32 @@ export const Home = () => {
     }
   };
 
-  const getRandomElements = (array, num) => {
-    const shuffled = array.sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, num);
-  };
+  // const getRandomElements = (array, num) => {
+  //   const shuffled = array.sort(() => 0.5 - Math.random());
+  //   return shuffled.slice(0, num);
+  // };
+
+  const fetchShopsFeedback = async () => {
+    try {
+      const response = await axios.get(`${Base_Url}api/feedback`);
   
-  const getRandomShopsByCity = (shops) => {
+      if (response.status === 200) {
+        const fetchedCategories = response.data;
+        console.log("Feed Back   Data ==>",fetchedCategories)
+        setShopFeedbackData(fetchedCategories);
+       
+      } else {
+        console.error('Error fetching categories:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error:', error.message);
+    }
+  };
+
+  
+  const getRandomShopsByCity = (shops, feedbacks, selectedExperience) => {
+    console.log("Random Shop Data Randow shop nearby ===========================>", shops, feedbacks);
+    
     // Group shops by city
     const shopsByCity = shops.reduce((acc, shop) => {
       if (!acc[shop.city]) {
@@ -170,18 +192,62 @@ export const Home = () => {
       return acc;
     }, {});
   
-    // Get random 3 cities
-    const cities = Object.keys(shopsByCity);
-    const randomCities = getRandomElements(cities, 3);
+    // Function to get feedbacks by experience
+    const getShopsByExperience = (experience) => {
+      const filteredFeedbacks = feedbacks && feedbacks.filter(feedback => feedback.experience === experience);
+      const shopIds = filteredFeedbacks &&  filteredFeedbacks.map(feedback => feedback.shopId ? feedback.shopId._id : '123');
+      return shopIds && shops.filter(shop => shopIds.includes(shop._id));
+    };
   
-    // For each selected city, get random 3 shops
+    // Get shops based on experience
+    let filteredShops = getShopsByExperience("Very Good");
+    console.log("Shop for Very Good ==========>",filteredShops)
+
+    if (filteredShops.length === 0) {
+      filteredShops = getShopsByExperience("Good");
+      console.log("Shop for Good ==========>",filteredShops)
+    }
+    // if (filteredShops.length === 0) {
+    //   filteredShops = getShopsByExperience("Bad");
+    //   console.log("Shop for Bad ==========>",filteredShops)
+    // }
+    if (filteredShops.length === 0) {
+      // If no shops match any feedback criteria, fallback to random selection
+      console.log("Data No Status Found as shops ===>")
+      const cities = Object.keys(shopsByCity);
+      const randomCities = getRandomElements(cities, 3);
+      const randomShopsByCity = randomCities.map((city) => {
+        const cityShops = shopsByCity[city];
+        const randomCityShops = getRandomElements(cityShops, 3);
+        return { city, shops: randomCityShops };
+      });
+      return randomShopsByCity;
+    }
+  
+    // Group the filtered shops by city and select 3 random cities and 3 random shops within each
+    const filteredShopsByCity = filteredShops.reduce((acc, shop) => {
+      if (!acc[shop.city]) {
+        acc[shop.city] = [];
+      }
+      acc[shop.city].push(shop);
+      return acc;
+    }, {});
+  
+    const cities = Object.keys(filteredShopsByCity);
+    const randomCities = getRandomElements(cities, 3);
     const randomShopsByCity = randomCities.map((city) => {
-      const cityShops = shopsByCity[city];
+      const cityShops = filteredShopsByCity[city];
       const randomCityShops = getRandomElements(cityShops, 3);
       return { city, shops: randomCityShops };
     });
   
     return randomShopsByCity;
+  };
+  
+  // Utility function to get random elements from an array
+  const getRandomElements = (arr, count) => {
+    const shuffled = [...arr].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
   };
 
 
@@ -230,7 +296,8 @@ export const Home = () => {
 
   useEffect(()=>{
     fetchShops();
-    fetchNearByShops()
+    fetchNearByShops();
+    fetchShopsFeedback()
   },[])
   return (
     <Box>

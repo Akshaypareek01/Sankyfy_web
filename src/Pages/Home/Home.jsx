@@ -16,7 +16,7 @@ import { SelectCityModel } from '../../Components/Models/SelectCityModel';
 import { SelectStateModel } from '../../Components/Models/SelectStateModel';
 import { isMobile } from '../../IsMobile/IsMobile';
 import OurS1 from "./ourSU.jpg"
-import OurS2 from "./shop2Services.jpeg"
+import OurS2 from "./shopvector.jpg"
 const Item = styled(Paper)(({ theme }) => ({
 
 

@@ -203,7 +203,7 @@ export const Home = () => {
     let filteredShops = getShopsByExperience("Very Good");
     console.log("Shop for Very Good ==========>",filteredShops)
 
-    if (filteredShops.length === 0) {
+    if (filteredShops && filteredShops.length === 0) {
       filteredShops = getShopsByExperience("Good");
       console.log("Shop for Good ==========>",filteredShops)
     }
@@ -211,7 +211,7 @@ export const Home = () => {
     //   filteredShops = getShopsByExperience("Bad");
     //   console.log("Shop for Bad ==========>",filteredShops)
     // }
-    if (filteredShops.length === 0) {
+    if (filteredShops && filteredShops.length === 0) {
       // If no shops match any feedback criteria, fallback to random selection
       console.log("Data No Status Found as shops ===>")
       const cities = Object.keys(shopsByCity);

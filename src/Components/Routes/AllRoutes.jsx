@@ -14,6 +14,8 @@ import { ShopKeeperSignup } from "../../Pages/Signup/ShopKeeperSignup";
 import { UnderVerifications } from "../../Pages/UnderVerifications";
 import { Chat } from "../../Pages/Chat/Chat";
 import ScrollToTop from "../ScrollTop/ScrollTop";
+import { TermandServices } from "../../Pages/TermandServices/TermandServices";
+import { PrivacyPolicy } from "../../Pages/TermandServices/PrivacyPolicy";
 
 export const AllRoutes = () => {
 //   const mobileView = useSelector((state) => state.mobileView);
@@ -46,6 +48,8 @@ export const AllRoutes = () => {
       <Route path="/shop-view/:id" element={<ShopView/>}></Route>
       <Route path="/shop-view/chat/:id" element={<Chat/>}></Route>
       <Route path="/about-us" element={<AboutUs/>}></Route>
+      <Route path="/term-and-condition" element={<TermandServices/>}></Route>
+      <Route path="/privacy-policy" element={<PrivacyPolicy/>}></Route>
       <Route path="/contact-us" element={<ContactUs/>}></Route>
       <Route path="/chat/:id" element={<Chat/>}></Route>
       {/* <Route

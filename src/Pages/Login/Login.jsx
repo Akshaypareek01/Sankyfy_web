@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { NavBar } from "../../Components/NavBar/NavBar";
 import {
+  Alert,
   Box,
   Button,
   Card,
   CardContent,
+  IconButton,
+  InputAdornment,
+  Snackbar,
   Switch,
   TextField,
   Typography,
@@ -17,6 +21,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Base_Url } from "../../Configs/BaseUrl";
 import { isMobile } from "../../IsMobile/IsMobile";
+import { SnackBarAlert } from "../../Components/Snackbar/SnackBarAlert";
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 export const Login = () => {
   const navigation =  useNavigate()
   const [formData, setFormData] = useState({
@@ -25,6 +31,19 @@ export const Login = () => {
     password: '',
 
   });
+  const [open, setOpen] = useState(false);
+  const[Message,setMessage] = useState("");
+  const [varient,setVarient] = useState("success");
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleClickShowPassword = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
 
   const handelShopLogin =()=>{
     navigation("/signup-shopkeeper")
@@ -54,9 +73,16 @@ export const Login = () => {
       localStorage.setItem("auth",true);
 
       window.location.href = "/";
+      setMessage("Login Successfully ")
+      setVarient("success")
+      setOpen(true);
     } catch (error) {
       console.log("Error==>",error);
-      alert("Login Error")
+      // alert("Login Error")
+      setMessage("Invalid email or password. Please try again.")
+      setVarient("error")
+      setOpen(true);
+     
     }
   };
   
@@ -80,6 +106,7 @@ export const Login = () => {
         
         }}
       >
+         <SnackBarAlert setOpen={setOpen} open={open} msg={Message} vairent={varient} />
          {/* <div style={{
     position: "absolute",
     top: 0,
@@ -155,14 +182,29 @@ export const Login = () => {
                   />
                 </Box>
                 <Box sx={{ marginTop: "20px" }}>
-                  <TextField
-                    sx={{ width: "100%" }}
-                    label="Password"
-                    variant="outlined"
-                    name="password" 
-                    value={formData.password} 
-                    onChange={handleChange} 
-                  />
+                   <TextField
+        sx={{ width: '100%' }}
+        type={showPassword ? 'text' : 'password'}
+        label="Password"
+        variant="outlined"
+        name="password"
+        value={formData.password}
+        onChange={handleChange}
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="toggle password visibility"
+                onClick={handleClickShowPassword}
+                onMouseDown={handleMouseDownPassword}
+                edge="end"
+              >
+                {showPassword ? <VisibilityOff /> : <Visibility />}
+              </IconButton>
+            </InputAdornment>
+          ),
+        }}
+      />
                 </Box>
 
                 <Box

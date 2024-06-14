@@ -6,12 +6,17 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import { isMobile } from '../../IsMobile/IsMobile';
 import { useNavigate } from 'react-router-dom';
+import { LinkedIn } from '@mui/icons-material';
 export const Footer = () => {
   const navigation = useNavigate();
   const handleClick = (path) => {
     navigation(path);
   
   };
+
+  const socialIconClick = (path) =>{
+    window.open(path, '_blank');
+  }
 
   return (
     <Box sx={{color:"#344767",position:"relative"}}>
@@ -25,10 +30,11 @@ export const Footer = () => {
             </Box>
 
             <Box sx={{marginTop:"20px"}}>
-            <InstagramIcon sx={{color:"grey",fontSize:"22px",cursor: 'pointer'}}/>
-               <FacebookIcon sx={{color:"grey",fontSize:"22px",marginLeft:"10px",cursor: 'pointer'}}/>
-               <TwitterIcon sx={{color:"grey",fontSize:"22px",marginLeft:"10px",cursor: 'pointer'}}/>
+            <InstagramIcon onClick={()=>{socialIconClick("https://www.instagram.com/sankyfy?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==")}} sx={{color:"grey",fontSize:"22px",cursor: 'pointer'}}/>
+               {/* <FacebookIcon sx={{color:"grey",fontSize:"22px",marginLeft:"10px",cursor: 'pointer'}}/>
+               <TwitterIcon sx={{color:"grey",fontSize:"22px",marginLeft:"10px",cursor: 'pointer'}}/> */}
                <YouTubeIcon sx={{color:"grey",fontSize:"22px",marginLeft:"10px",cursor: 'pointer'}}/>
+               <LinkedIn onClick={()=>{socialIconClick("https://www.linkedin.com/company/sankyfy-com/")}} sx={{color:"grey",fontSize:"22px",marginLeft:"10px",cursor: 'pointer'}}/>
             </Box>
            
           </Box>
@@ -58,8 +64,8 @@ export const Footer = () => {
 
                       <Box sx={{textAlign:"left"}}>
             <Box sx={{fontSize:"16px",fontWeight:500,marginBottom:"13px"}}>Legal</Box>
-            <Box onClick={() => handleClick('/')} sx={{cursor: 'pointer'}}>Terms & Conditions</Box>
-            <Box  onClick={() => handleClick('/')} sx={{cursor: 'pointer',marginTop:"8px"}}>Privacy Policy</Box>
+            <Box onClick={() => handleClick('/term-and-condition')} sx={{cursor: 'pointer'}}>Terms & Conditions</Box>
+            <Box  onClick={() => handleClick('/privacy-policy')} sx={{cursor: 'pointer',marginTop:"8px"}}>Privacy Policy</Box>
             {/* <Box sx={{marginTop:"8px"}}>Licenses (EULA)</Box> */}
           </Box>
                       </Grid>

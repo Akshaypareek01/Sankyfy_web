@@ -32,6 +32,7 @@ const ExpandMore = styled((props) => {
 
 export const StoreCards =({data})=> {
   const navigation = useNavigate()
+  const userDetails = JSON.parse(localStorage.getItem("userDetails")) || null;
   const [expanded, setExpanded] = React.useState(false);
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -49,7 +50,14 @@ export const StoreCards =({data})=> {
 
   const handelChatus = ()=>{
     console.log("Chat us Data ===>",data)
-    navigation(`chat/${data.shopkeeperId}`)
+    if(userDetails){
+      // window.location.href = `chat/${shopData.shopkeeperId._id}`
+      navigation(`chat/${data.shopkeeperId}`)
+      return
+  }
+
+  alert("Please Login to chat with store owner")
+    
   }
 
   return (

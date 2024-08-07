@@ -184,13 +184,13 @@ export const Home = () => {
     console.log("Random Shop Data Randow shop nearby ===========================>", shops, feedbacks);
     
     // Group shops by city
-    const shopsByCity = shops.reduce((acc, shop) => {
+    const shopsByCity = shops && shops.length > 0 ? shops.reduce((acc, shop) => {
       if (!acc[shop.city]) {
         acc[shop.city] = [];
       }
       acc[shop.city].push(shop);
       return acc;
-    }, {});
+    }, {}) : {};
   
     // Function to get feedbacks by experience
     const getShopsByExperience = (experience) => {
@@ -225,13 +225,13 @@ export const Home = () => {
     }
   
     // Group the filtered shops by city and select 3 random cities and 3 random shops within each
-    const filteredShopsByCity = filteredShops.reduce((acc, shop) => {
+    const filteredShopsByCity = filteredShops && filteredShops.length > 0 ? filteredShops.reduce((acc, shop) => {
       if (!acc[shop.city]) {
         acc[shop.city] = [];
       }
       acc[shop.city].push(shop);
       return acc;
-    }, {});
+    }, {}) : {};
   
     const cities = Object.keys(filteredShopsByCity);
     const randomCities = getRandomElements(cities, 3);
@@ -319,7 +319,7 @@ export const Home = () => {
            <Box sx={{display:"flex",justifyContent:"center",alignItems:"center",flexDirection:"column",marginTop:"20px",width:`${isMobile ? '80%' : "60%"}`}}>
             {
               !isMobile && <Box>
-              <Typography sx={{fontSize:"38px",color:"#fff"}}>Welcome to SankfYf, We have everything for Shopkeepers & consumer.</Typography>
+              <Typography sx={{fontSize:"38px",color:"#fff"}}>Welcome to Sankyfy, We have everything for Shopkeepers & consumer.</Typography>
               </Box>
               
             }
